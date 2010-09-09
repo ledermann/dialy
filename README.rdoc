@@ -1,0 +1,38 @@
+= dialy
+
+Formatting phone numbers in the E.123 format (http://en.wikipedia.org/wiki/E.123)
+
+This gem takes an unformatted ugly string with a phone numbers and builds a pretty one. This is useful for application storing phone numbers in a normalized way.
+
+    Dialy.format_number('+49 (0221) 12 34 56')
+    # => '+49 221 1234567'
+    
+    Dialy.format_number('+49 (0)221 12 34 56')
+    # => '+49 221 1234567'
+    
+    Dialy.format_number('0221/123456')
+    # => '+49 221 1234567'
+    
+    Dialy.format_number('0049221123456')
+    # => '+49 221 1234567'
+    
+Because the area code in Germany, Austria and Switzerland have different length, an automatic detection from a given phone number is not possible. The gem knows all area codes for this countries.
+
+== Install
+You can install the phone library as a gem
+    gem sources -a http://gemcutter.org
+    gem install dialy
+
+== Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a
+  future version unintentionally.
+* Commit, do not mess with rakefile, version, or history.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+== Copyright
+
+Copyright (c) 2010 Georg Ledermann. See LICENSE for details.
