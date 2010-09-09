@@ -16,8 +16,16 @@ describe "Dialy" do
     Dialy::AREA_CODES['41'].should be_include('44')
   end
   
+  describe "options" do
+    it "should use default_country_code" do
+      Dialy::Config[:default_country_code] = '41'
+      Dialy.format_number('030-12345678').should == '+41 30 12345678'
+    end
+  end
+  
   describe "Germany" do
     before :each do
+      Dialy::Config[:default_country_code] = '49'
       @expected = '+49 2406 12345678'
     end
     
@@ -43,23 +51,36 @@ describe "Dialy" do
   end
 
   describe "German mobile" do
+    before :each do
+      Dialy::Config[:default_country_code] = '49'
+    end
+    
     it "should format" do
       Dialy.format_number('0163-1234567').should == '+49 163 1234567'
       Dialy.format_number('0171-1234567').should == '+49 171 1234567'
     end
   end
   
-  describe "Switzerland" do
-    it "should format" do
-      Dialy.format_number('0041-71-123 45 67').should == '+41 71 1234567'
+  describe "obsure input" do
+    before :each do
+      Dialy::Config[:default_country_code] = '49'
     end
-  end
-  
-  describe "other" do
+    
     it "should format" do
       Dialy.format_number('(+49) (08541) 123456').should == '+49 8541 123456'
       Dialy.format_number('0 08 00-1 23 45 67').should == '+800 1234567'
       Dialy.format_number('[0351] 1 23 45 6').should == '+49 351 123456'
+    end
+  end
+  
+  describe "Switzerland" do
+    before :each do
+      Dialy::Config[:default_country_code] = '41'
+    end
+    
+    it "should format" do
+      Dialy.format_number('0041-71-123 45 67').should == '+41 71 1234567'
+      Dialy.format_number('71-123 45 67').should == '+41 71 1234567'
     end
   end
   

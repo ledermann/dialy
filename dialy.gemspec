@@ -25,6 +25,9 @@ Gem::Specification.new do |s|
      "VERSION",
      "dialy.gemspec",
      "lib/dialy.rb",
+     "lib/dialy/config.rb",
+     "lib/dialy/data.rb",
+     "lib/dialy/formatter.rb",
      "spec/dialy_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"

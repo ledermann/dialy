@@ -6,6 +6,7 @@ This gem takes an unformatted ugly string with a phone number and builds a prett
 
 Because the area code in Germany, Austria and Switzerland have different lengths, an automatic detection from a given phone number is not possible. So the gem knows all area codes for this countries.
 
+
 == Examples
 
     Dialy.format_number('+49 (0221) 12 34 56')
@@ -14,16 +15,26 @@ Because the area code in Germany, Austria and Switzerland have different lengths
     Dialy.format_number('+49 (0)221 12 34 56')
     # => '+49 221 1234567'
     
-    Dialy.format_number('0221/123456')
-    # => '+49 221 1234567'
-    
     Dialy.format_number('0049221123456')
     # => '+49 221 1234567'
 
+    Dialy::Config[:default_country_code] = '49'
+    Dialy.format_number('0221/123456')
+    # => '+49 221 1234567'
+
+
 == Install
+
 You can install the library as a gem
-    gem sources -a http://gemcutter.org
+
     gem install dialy
+
+
+== TODO
+
+* Add country codes from http://en.wikipedia.org/wiki/List_of_country_calling_codes
+* Add area codes for other countries than DE/AT/CH
+
 
 == Note on Patches/Pull Requests
  
