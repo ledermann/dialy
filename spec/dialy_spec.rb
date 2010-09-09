@@ -43,12 +43,9 @@ describe "Dialy" do
   end
 
   describe "German mobile" do
-    before :each do
-      @expected = '+49 163 1234567'
-    end
-    
     it "should format" do
-      Dialy.format_number('0163-1234567').should == @expected
+      Dialy.format_number('0163-1234567').should == '+49 163 1234567'
+      Dialy.format_number('0171-1234567').should == '+49 171 1234567'
     end
   end
   
