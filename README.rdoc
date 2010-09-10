@@ -4,7 +4,7 @@ Formatting phone numbers in the E.123 format (http://en.wikipedia.org/wiki/E.123
 
 This gem takes an unformatted ugly string with a phone number and builds a pretty one. This is useful for applications storing phone numbers in a normalized way.
 
-Because the area code in Germany, Austria and Switzerland have different lengths, an automatic detection from a given phone number is not possible. So the gem knows all area codes for this countries.
+Because the area codes in Germany, Austria and Switzerland have different lengths, an automatic detection from a given phone number is not possible. So the gem knows all area codes for this countries.
 
 
 == Examples
