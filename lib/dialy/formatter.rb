@@ -1,5 +1,5 @@
 module Dialy
-  def self.format_number(value)
+  def self.format(value)
     # Remove all but digits and +
     plain = value.gsub(/[^+0-9]/, '')
     
