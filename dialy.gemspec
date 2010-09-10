@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dialy}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Georg Ledermann"]
-  s.date = %q{2010-09-09}
+  s.date = %q{2010-09-10}
   s.description = %q{Knows all area codes from Germany, Austria and Switzerland}
   s.email = %q{mail@georg-ledermann.de}
   s.extra_rdoc_files = [
@@ -27,6 +27,10 @@ Gem::Specification.new do |s|
      "lib/dialy.rb",
      "lib/dialy/config.rb",
      "lib/dialy/data.rb",
+     "lib/dialy/data/at.rb",
+     "lib/dialy/data/ch.rb",
+     "lib/dialy/data/countries.rb",
+     "lib/dialy/data/de.rb",
      "lib/dialy/formatter.rb",
      "spec/dialy_spec.rb",
      "spec/spec.opts",
