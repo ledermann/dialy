@@ -16,6 +16,12 @@ describe "Dialy" do
     Dialy::AREA_CODES[41].should be_include(44)
   end
   
+  it "should calc min and max length" do
+    Dialy::AC_RANGE[41].should == (2..3)
+    Dialy::AC_RANGE[43].should == (1..4)
+    Dialy::AC_RANGE[49].should == (2..5)
+  end
+  
   describe "options" do
     it "should use default_country_code" do
       Dialy::Config[:default_country_code] = 41

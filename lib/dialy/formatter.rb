@@ -12,6 +12,9 @@ module Dialy
     if match = plain.match(/^(\+|00)(\d{1,3})/)
       plain.slice!(0,match[1].length)
       
+      # Because the length of a country code is not fixed, we have to do
+      # multiple searches. Start with the minimum length and go to the 
+      # maxium until an area code is found.
       (1..3).each do |len|
         part = match[2][0,len].to_i
         
@@ -33,7 +36,11 @@ module Dialy
     # Step 2: Find area code
     area_code = nil
     if AREA_CODES[country_code]
-      (2..5).each do |len|
+      
+      # Because the length of an area code is not fixed, we have to do
+      # multiple searches. Start with the minimum length and go to the 
+      # maxium until an area code is found.
+      AC_RANGE[country_code].each do |len|
         part = plain[0,len].to_i
       
         if AREA_CODES[country_code].include?(part)
