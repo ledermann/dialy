@@ -13,7 +13,7 @@ module Dialy
       plain.slice!(0,match[1].length)
       
       (1..3).each do |len|
-        part = match[2][0,len]
+        part = match[2][0,len].to_i
         
         if COUNTRY_CODES.include?(part)
           country_code = part
@@ -34,7 +34,7 @@ module Dialy
     area_code = nil
     if AREA_CODES[country_code]
       (2..5).each do |len|
-        part = plain[0,len]
+        part = plain[0,len].to_i
       
         if AREA_CODES[country_code].include?(part)
           area_code = part

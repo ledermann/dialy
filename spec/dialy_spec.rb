@@ -2,30 +2,30 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe "Dialy" do
   it "should find area codes" do
-    Dialy::AREA_CODES['49'].should be_include('221')
-    Dialy::AREA_CODES['49'].should be_include('2233')
-    Dialy::AREA_CODES['49'].should be_include('2235')
-    Dialy::AREA_CODES['49'].should be_include('2406')
-    Dialy::AREA_CODES['49'].should be_include('30')
-    Dialy::AREA_CODES['49'].should be_include('241')
-    Dialy::AREA_CODES['49'].should be_include('39291')
-    Dialy::AREA_CODES['49'].should be_include('163')
+    Dialy::AREA_CODES[49].should be_include(221)
+    Dialy::AREA_CODES[49].should be_include(2233)
+    Dialy::AREA_CODES[49].should be_include(2235)
+    Dialy::AREA_CODES[49].should be_include(2406)
+    Dialy::AREA_CODES[49].should be_include(30)
+    Dialy::AREA_CODES[49].should be_include(241)
+    Dialy::AREA_CODES[49].should be_include(39291)
+    Dialy::AREA_CODES[49].should be_include(163)
     
-    Dialy::AREA_CODES['43'].should be_include('1')
+    Dialy::AREA_CODES[43].should be_include(1)
     
-    Dialy::AREA_CODES['41'].should be_include('44')
+    Dialy::AREA_CODES[41].should be_include(44)
   end
   
   describe "options" do
     it "should use default_country_code" do
-      Dialy::Config[:default_country_code] = '41'
+      Dialy::Config[:default_country_code] = 41
       Dialy.format_number('030-12345678').should == '+41 30 12345678'
     end
   end
   
   describe "Germany" do
     before :each do
-      Dialy::Config[:default_country_code] = '49'
+      Dialy::Config[:default_country_code] = 49
       @expected = '+49 2406 12345678'
     end
     
@@ -52,7 +52,7 @@ describe "Dialy" do
 
   describe "German mobile" do
     before :each do
-      Dialy::Config[:default_country_code] = '49'
+      Dialy::Config[:default_country_code] = 49
     end
     
     it "should format" do
@@ -63,7 +63,7 @@ describe "Dialy" do
   
   describe "obsure input" do
     before :each do
-      Dialy::Config[:default_country_code] = '49'
+      Dialy::Config[:default_country_code] = 49
     end
     
     it "should format" do
@@ -75,7 +75,7 @@ describe "Dialy" do
   
   describe "Switzerland" do
     before :each do
-      Dialy::Config[:default_country_code] = '41'
+      Dialy::Config[:default_country_code] = 41
     end
     
     it "should format" do

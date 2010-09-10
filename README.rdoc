@@ -18,7 +18,7 @@ Because the area code in Germany, Austria and Switzerland have different lengths
     Dialy.format_number('0049221123456')
     # => '+49 221 1234567'
 
-    Dialy::Config[:default_country_code] = '49'
+    Dialy::Config[:default_country_code] = 49
     Dialy.format_number('0221/123456')
     # => '+49 221 1234567'
 

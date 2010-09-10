@@ -1,7 +1,7 @@
 module Dialy
   module Config
     DEFAULT_OPTIONS = {
-      :default_country_code => '49'
+      :default_country_code => 49
     }
     @options = DEFAULT_OPTIONS.clone
 
