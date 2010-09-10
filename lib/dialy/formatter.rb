@@ -15,7 +15,7 @@ module Dialy
       # Because the length of a country code is not fixed, we have to do
       # multiple searches. Start with the minimum length and go to the 
       # maxium until an area code is found.
-      (1..3).each do |len|
+      CC_RANGE.each do |len|
         part = match[2][0,len].to_i
         
         if COUNTRY_CODES.include?(part)

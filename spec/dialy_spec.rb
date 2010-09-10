@@ -17,6 +17,7 @@ describe "Dialy" do
   end
   
   it "should calc min and max length" do
+    Dialy::CC_RANGE.should == (1..3)
     Dialy::AC_RANGE[41].should == (2..3)
     Dialy::AC_RANGE[43].should == (1..4)
     Dialy::AC_RANGE[49].should == (2..5)

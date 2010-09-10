@@ -17,4 +17,9 @@ module Dialy
     
     AC_RANGE[country_code] = (min_length..max_length)
   end
+  
+  # same for country codes
+  min_length = Math.log10(COUNTRY_CODES.min).to_i + 1
+  max_length = Math.log10(COUNTRY_CODES.max).to_i + 1
+  CC_RANGE = (min_length..max_length)
 end

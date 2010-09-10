@@ -32,7 +32,6 @@ You can install the library as a gem
 
 == TODO
 
-* Add country codes from http://en.wikipedia.org/wiki/List_of_country_calling_codes
 * Add area codes for other countries than DE/AT/CH
 
 
