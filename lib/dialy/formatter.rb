@@ -22,7 +22,7 @@ module Dialy
         end
       end
       
-      raise ArgumentError("Unknown country code: #{match[2]}") unless country_code
+      raise ArgumentError.new("Unknown country code: #{match[2]}") unless country_code
     else
       country_code = Config[:default_country_code]
     end
@@ -43,7 +43,7 @@ module Dialy
         end
       end
       
-      raise ArgumentError("Area code not found") unless area_code
+      raise ArgumentError.new("Area code not found") unless area_code
     end
     
     # Finished. Build result

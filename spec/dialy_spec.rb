@@ -61,7 +61,7 @@ describe "Dialy" do
     end
   end
   
-  describe "obsure input" do
+  describe "obscure input" do
     before :each do
       Dialy::Config[:default_country_code] = 49
     end
@@ -91,11 +91,11 @@ describe "Dialy" do
     end
     
     it "should fail for non existing area_code" do
-      lambda { Dialy.format_number('+49 2396 1234567') }.should raise_error
+      lambda { Dialy.format_number('+49 2396 1234567') }.should raise_error(ArgumentError)
     end
     
     it "should fail for non existing country_code" do
-      lambda { Dialy.format_number('+429 1234 1234567') }.should raise_error
+      lambda { Dialy.format_number('+429 1234 1234567') }.should raise_error(ArgumentError)
     end
   end
 end
