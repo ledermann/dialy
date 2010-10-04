@@ -93,16 +93,16 @@ describe "Dialy" do
   
   describe "Wrong formatting" do
     it "should fail with +" do
-      lambda { Dialy.format('++49') }.should raise_error(ArgumentError)
-      lambda { Dialy.format('0+49 221') }.should raise_error(ArgumentError)
+      lambda { Dialy.format('++49') }.should raise_error(Dialy::WrongFormatting)
+      lambda { Dialy.format('0+49 221') }.should raise_error(Dialy::WrongFormatting)
     end
     
     it "should fail for non existing area_code" do
-      lambda { Dialy.format('+49 2396 1234567') }.should raise_error(ArgumentError)
+      lambda { Dialy.format('+49 2396 1234567') }.should raise_error(Dialy::UnknownAreaCode)
     end
     
     it "should fail for non existing country_code" do
-      lambda { Dialy.format('+429 1234 1234567') }.should raise_error(ArgumentError)
+      lambda { Dialy.format('+429 1234 1234567') }.should raise_error(Dialy::UnknownCountryCode)
     end
   end
 end
