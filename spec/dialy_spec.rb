@@ -105,4 +105,15 @@ describe "Dialy" do
       lambda { Dialy.format('+429 1234 1234567') }.should raise_error(Dialy::UnknownCountryCode)
     end
   end
+  
+  describe "error correction" do
+    before :each do
+      Dialy::Config[:default_country_code] = 49
+    end
+    
+    it "should format for invalid 00" do
+      Dialy.format('003834-831708').should == '+49 3834 831708'
+      #Dialy.format('00201-123456').should == '+49 0201 123456'
+    end
+  end
 end
