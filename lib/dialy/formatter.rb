@@ -44,12 +44,6 @@ module Dialy
           end
         end
       
-        if match[1] == '00'
-          # Seems to be not a country_code, so remove the first "0" and use it as local number
-          @number.slice!(0,1)
-          return
-        end
-      
         raise UnknownCountryCode.new("Unknown country code: #{match[2]}") 
       end
     end
