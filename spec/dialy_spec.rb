@@ -26,7 +26,7 @@ describe "Dialy" do
   describe "options" do
     it "should use default_country_code" do
       Dialy::Config[:default_country_code] = 41
-      Dialy.format('030-12345678').should == '+41 30 12345678'
+      Dialy::Number.new('030-12345678').to_s.should == '+41 30 12345678'
     end
   end
   
@@ -37,23 +37,23 @@ describe "Dialy" do
     end
     
     it "should format plain number" do
-      Dialy.format('02406-12345678').should == @expected
+      Dialy::Number.new('02406-12345678').to_s.should == @expected
     end
     
     it "should format with +49" do
-      Dialy.format('+49240612345678').should == @expected
+      Dialy::Number.new('+49240612345678').to_s.should == @expected
     end
     
     it "should format with +49(0)" do
-      Dialy.format('+49(0)2406-123456-78').should == @expected
+      Dialy::Number.new('+49(0)2406-123456-78').to_s.should == @expected
     end
 
     it "should format with 0049" do
-      Dialy.format('0049240612345678').should == @expected
+      Dialy::Number.new('0049240612345678').to_s.should == @expected
     end
     
     it "should format with missing 0" do
-      Dialy.format('240612345678').should == @expected
+      Dialy::Number.new('240612345678').to_s.should == @expected
     end
   end
 
@@ -63,8 +63,8 @@ describe "Dialy" do
     end
     
     it "should format" do
-      Dialy.format('0163-1234567').should == '+49 163 1234567'
-      Dialy.format('0171-1234567').should == '+49 171 1234567'
+      Dialy::Number.new('0163-1234567').to_s.should == '+49 163 1234567'
+      Dialy::Number.new('0171-1234567').to_s.should == '+49 171 1234567'
     end
   end
   
@@ -74,9 +74,9 @@ describe "Dialy" do
     end
     
     it "should format" do
-      Dialy.format('(+49) (08541) 123456').should == '+49 8541 123456'
-      Dialy.format('0 08 00-1 23 45 67').should == '+800 1234567'
-      Dialy.format('[0351] 1 23 45 6').should == '+49 351 123456'
+      Dialy::Number.new('(+49) (08541) 123456').to_s.should == '+49 8541 123456'
+      Dialy::Number.new('0 08 00-1 23 45 67').to_s.should == '+800 1234567'
+      Dialy::Number.new('[0351] 1 23 45 6').to_s.should == '+49 351 123456'
     end
   end
   
@@ -86,23 +86,23 @@ describe "Dialy" do
     end
     
     it "should format" do
-      Dialy.format('0041-71-123 45 67').should == '+41 71 1234567'
-      Dialy.format('71-123 45 67').should == '+41 71 1234567'
+      Dialy::Number.new('0041-71-123 45 67').to_s.should == '+41 71 1234567'
+      Dialy::Number.new('71-123 45 67').to_s.should == '+41 71 1234567'
     end
   end
   
   describe "Wrong formatting" do
     it "should fail with +" do
-      lambda { Dialy.format('++49') }.should raise_error(Dialy::WrongFormatting)
-      lambda { Dialy.format('0+49 221') }.should raise_error(Dialy::WrongFormatting)
+      lambda { Dialy::Number.new('++49') }.should raise_error(Dialy::WrongFormatting)
+      lambda { Dialy::Number.new('0+49 221') }.should raise_error(Dialy::WrongFormatting)
     end
     
     it "should fail for non existing area_code" do
-      lambda { Dialy.format('+49 2396 1234567') }.should raise_error(Dialy::UnknownAreaCode)
+      lambda { Dialy::Number.new('+49 2396 1234567') }.should raise_error(Dialy::UnknownAreaCode)
     end
     
     it "should fail for non existing country_code" do
-      lambda { Dialy.format('+429 1234 1234567') }.should raise_error(Dialy::UnknownCountryCode)
+      lambda { Dialy::Number.new('+429 1234 1234567') }.should raise_error(Dialy::UnknownCountryCode)
     end
   end
   
@@ -112,8 +112,8 @@ describe "Dialy" do
     end
     
     it "should format for invalid 00" do
-      Dialy.format('003834-831708').should == '+49 3834 831708'
-      #Dialy.format('00201-123456').should == '+49 0201 123456'
+      Dialy::Number.new('003834-831708').to_s.should == '+49 3834 831708'
+      #Dialy::Number.new('00201-123456').should == '+49 0201 123456'
     end
   end
 end
