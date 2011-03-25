@@ -21,6 +21,10 @@ Because the area codes in Germany, Austria and Switzerland have different length
     Dialy::Config[:default_country_code] = 49
     Dialy::Number.new('0221/123456').to_s
     # => '+49 221 1234567'
+    
+    # Display national number without country code
+    Dialy::Number.new('0221/123456').to_s(:short)
+    # => '(0221) 1234567'
 
 
 == Install

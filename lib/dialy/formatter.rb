@@ -20,8 +20,19 @@ module Dialy
     end
     
     # String representation in E.123 format
-    def to_s
-      "+#{@country_code} #{[ @area_code, @number ].compact.join(' ')}"
+    def to_s(format=:international)
+      case format
+        when :international
+          "+#{@country_code} #{[ @area_code, @number ].compact.join(' ')}"
+        when :short
+          if @country_code == Config[:default_country_code]
+            "(0#{@area_code}) #{@number}"
+          else
+            to_s(:international)
+          end
+        else
+          raise ArgumentError
+      end
     end
   
   private

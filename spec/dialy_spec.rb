@@ -55,6 +55,15 @@ describe "Dialy" do
     it "should format with missing 0" do
       Dialy::Number.new('240612345678').to_s.should == @expected
     end
+    
+    it "should format german number in short format" do
+      Dialy::Number.new('+49 2406 12345678').to_s(:short).should == '(02406) 12345678'
+    end
+    
+    it "should format number from other country always in long format" do
+      Dialy::Number.new('+41 71 1234567').to_s.should         == '+41 71 1234567'
+      Dialy::Number.new('+41 71 1234567').to_s(:short).should == '+41 71 1234567'
+    end
   end
 
   describe "German mobile" do
