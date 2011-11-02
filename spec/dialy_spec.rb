@@ -64,6 +64,10 @@ describe "Dialy" do
       Dialy::Number.new('+41 71 1234567').to_s.should         == '+41 71 1234567'
       Dialy::Number.new('+41 71 1234567').to_s(:short).should == '+41 71 1234567'
     end
+    
+    it "should format non geographical numbers" do
+      Dialy::Number.new('+49 3222 176 45 42').to_s.should == '+49 32 221764542'
+    end
   end
 
   describe "German mobile" do
